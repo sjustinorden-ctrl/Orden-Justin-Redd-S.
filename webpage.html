@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REDDWEB - </title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        
+        body {
+            font-family: 'Poppins', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff; 
+            color: #fff; 
+            line-height: 1.6;
+            overflow-x: hidden; 
+        }
+
+       
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        :root {
+            --accent-color: #fbff00; 
+            --light-text: #ffffff;
+            --dark-bg: #000000;
+            --secondary-bg: #1a1a1a;
+        }
+
+        .header {
+            background-color: var(--dark-bg);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(245, 8, 8, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+     
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: #f80000;
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #fff;
+            color: var(--accent-color);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #fff;
+        }
+
+        .btn-download {
+            background-color: #fff;
+            color: #000;
+            border: 2px solid #fff;
+            padding: 12px 30px;
+        }
+
+        .btn-download:hover {
+            background-color: var(--accent-color);
+            color: #fff;
+            border-color: var(--accent-color);
+        }
+
+     
+        section {
+            padding: 100px 0;
+            background-color: var(--dark-bg);
+         
+            border-top: 1px solid rgba(255, 0, 0, 0.05); 
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+            color: #fff;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--light-text);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+        }
+
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px; 
+            background-color: var(--dark-bg);
+        }
+
+        .hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            flex-wrap: wrap; 
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+        }
+
+        .greeting {
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 60px;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            line-height: 1.1;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+        }
+
+        .subtitle {
+            font-size: 24px;
+            color: var(--light-text);
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px; 
+      
+            box-shadow: 0 0 30px rgba(255, 196, 0, 0.3); 
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+  
+        .about-content {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(72, 255, 0, 0.3);
+        }
+
+        .about-details {
+            flex: 1.5;
+            min-width: 300px;
+            color: #fff;
+        }
+
+        .about-details p {
+            margin-bottom: 15px;
+            font-size: 17px;
+        }
+
+        .about-details p strong {
+            color: var(--accent-color);
+            display: inline-block;
+            width: 120px; 
+            margin-right: 10px;
+        }
+
+        .project-count {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--accent-color) !important;
+            margin-top: 30px;
+            margin-bottom: 30px !important;
+        }
+
+   
+        .skills-grid {
+            display: grid;
+      
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            width: 100%;
+            max-width: 1000px;
+            margin: 40px auto 0 auto;
+        }
+
+        .skill-item {
+            background-color: var(--secondary-bg);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fff;
+            display: inline-block;
+        }
+
+        .skill-percentage {
+            float: right;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--accent-color);
+        }
+
+        .progress-bar {
+            background-color: #333;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: var(--accent-color);
+            border-radius: 5px;
+            transition: width 1s ease-in-out;
+        }
+
+        .footer {
+            background-color: #111;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+       
+        @media (max-width: 1000px) {
+            .title {
+                font-size: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            .nav-links {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-links li {
+                margin: 0 15px 10px;
+            }
+            
+            .hero .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content {
+                order: 2; 
+            }
+            .hero-image {
+                order: 1; 
+                margin-bottom: 40px;
+            }
+            .title {
+                font-size: 45px;
+            }
+            .subtitle {
+                font-size: 20px;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .about-details p strong {
+                display: block;
+                width: auto;
+                margin-bottom: 5px;
+                color: #fff; 
+            }
+            .section-title {
+                font-size: 38px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 35px;
+            }
+            .subtitle {
+                font-size: 18px;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .btn {
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .section-title {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">REDDWEB</a>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="greeting">HELLO WORLD!</p>
+                <h1 class="title">Justin Redd <span class="highlight">Orden</span></h1>
+                <p class="subtitle">Web & Software Developer</p>
+                <div class="hero-buttons">
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="reddpic.jpg" alt="reddorden Profile Picture">
+            </div>
+        </div>
+    </section>
+    
+    <section id="about" class="about-me">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-description">Hi! I’m Justin Redd Orden, a BSIT 3 student from San Sebastian College–Recoletos de Cavite. I’m someone who’s really into tech and always trying to learn something new—whether it’s for school or just out of curiosity.
+
+Aside from being a student, I also buy and sell on the side. It started as a small hobby, but it taught me a lot about dealing with people, managing my time, and handling a small hustle. I enjoy meeting different kinds of people, taking opportunities when they come, and improving myself little by little.</p>
+            <div class="about-content">
+                <div class="about-image">
+                </div>
+                <div class="about-details">
+                    <p><strong>Name:</strong> Justin Redd Orden</p>
+                    <p><strong>Date of Birth:</strong> August 17, 2002</p>
+                    <p><strong>Address:</strong> 047 Everlasting St, Bagbag 2 Rosario,Cavite</p>
+                    <p><strong>Zip code:</strong> 2000</p>
+                    <p><strong>Email:</strong> s.justin.orden@sscr.edu</p>
+                    <p><strong>Phone:</strong> 09124940439</p>
+                    <a href="#" class="btn btn-download">DOWNLOAD CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    </section>
+
+    <section id="skills" class="my-skills">
+     <style>
+    .skills-box {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background: #fff;
+        text-align: center;
+    }
+
+    .skills-box h2 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: 600;
+        color: #000;
+    }
+
+    .skills-box ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 18px;
+        color: #333;
+        line-height: 2;
+    }
+
+    .skills-box ul li {
+        padding: 5px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .skills-box ul li:last-child {
+        border-bottom: none;
+    }
+</style>
+
+<div class="skills-box">
+    <h2>My Skills</h2>
+    <ul>
+        <li>PHP  </li>
+        <li>HTML5 </li>
+        <li>CSS </li>
+        <li>JAVA </li>
+    </ul>
+</div>
+
+
+   
+   
+
+   <section id="contact" class="contact">
+    <div class="container">
+        <h2 class="section-title">Contact</h2>
+
+        <div class="social-links" style="text-align:center; margin-top:20px;">
+     
+            <a href="https://facebook.com/YOUR_USERNAME" 
+               style="font-size:30px; margin:0 15px; color:#1877f2;">
+               <i class="fab fa-facebook"></i>
+            </a>
+
+    
+            <a href="mailto:your-email@example.com" 
+               style="font-size:30px; margin:0 15px; color:#00ff9d;">
+               <i class="fas fa-envelope"></i>
+            </a>
+
+            <a href="https://instagram.com/YOUR_USERNAME" 
+               style="font-size:30px; margin:0 15px; color:#e1306c;">
+               <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 REDD WEB.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
